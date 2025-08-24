@@ -94,3 +94,4 @@ app.listen(PORT, () => {
     console.log(`   - ${resource}`);
   });
 });
+Fix port configuration for Render deployment
