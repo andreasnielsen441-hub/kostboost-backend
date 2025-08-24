@@ -69,7 +69,17 @@ app.post('/api/free-resource', async (req, res) => {
     res.status(500).json({ error: 'Kunne ikke sende email' });
   }
 });
-
+// Root endpoint
+app.get('/', (req, res) => {
+  res.json({ 
+    message: 'KostBoost Backend Server kører! 🚀',
+    status: 'online',
+    endpoints: {
+      test: '/api/test',
+      freeResource: '/api/free-resource'
+    }
+  });
+});
 // Test endpoint
 app.get('/api/test', (req, res) => {
   res.json({ message: 'Server kører!' });
