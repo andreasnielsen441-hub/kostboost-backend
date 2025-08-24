@@ -1,7 +1,12 @@
-const express = require('express');
-const cors = require('cors');
-const sgMail = require('@sendgrid/mail');
-const path = require('path');
+import express from 'express';
+import cors from 'cors';
+import sgMail from '@sendgrid/mail';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 const app = express();
 const PORT = 3000;
@@ -11,8 +16,8 @@ app.use(cors());
 app.use(express.json());
 app.use(express.static('public'));
 
-// SendGrid setup
-sgMail.setApiKey('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');
+// SendGrid setup - API key skal sættes som environment variable
+sgMail.setApiKey(process.env.SENDGRID_API_KEY || 'YOUR_API_KEY_HERE');
 
 // PDF URLs - opdateret med Google Drive links
 const PDF_URLS = {
